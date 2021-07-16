@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
 using Store.Test.Rest;
+using Store.Test.Dtos.PostAndPut;
 
 namespace Store.Test.Base
 {
@@ -76,7 +77,20 @@ namespace Store.Test.Base
             return result;
         }
 
-
+        public static ClientesPostReturn ClientesPostReturn(string nome, string enderecoCliente, string cpfCliente, string cepCliente, string bairroCliente, string telefone, string celular)
+        {
+            ClientesPostReturn clientesPostReturn = new ClientesPostReturn
+            {
+                NomeCliente = nome,
+                EnderecoCliente = enderecoCliente,
+                CpfCLiente = cpfCliente,
+                CepCliente = cepCliente,
+                BairroCliente = bairroCliente,
+                TelefoneFixCliente = telefone,
+                CelularCliente = celular
+            };
+            return clientesPostReturn;
+        }
 
     }
 }
