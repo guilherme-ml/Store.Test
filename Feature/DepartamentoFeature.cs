@@ -14,17 +14,17 @@ namespace Store.Test.Feature
         [Fact]
         public async Task TestDepartamento()
         {
-            var postResponse = await Post<RetornoDepartamento>(Endpoints.BaseURI, Endpoints.Departamento, DepartamentoPostReturn("Teste", 1, 5));
-            Assert.True(postResponse.NomeDepartamento != null);
+            var postDepartamento = await Post<RetornoDepartamento>(Endpoints.BaseURI, Endpoints.Departamento, DepartamentoPostReturn("Teste", 1, 5));
+            Assert.True(postDepartamento.NomeDepartamento != null);
 
-            var getResponse = await Get<RetornoDepartamento>(Endpoints.BaseURI, Path.Combine(Endpoints.Departamento, postResponse.Id.ToString()));
-            Assert.NotNull(getResponse.NomeDepartamento);
+            var getDepartamento = await Get<RetornoDepartamento>(Endpoints.BaseURI, Path.Combine(Endpoints.Departamento, postDepartamento.Id.ToString()));
+            Assert.NotNull(getDepartamento.NomeDepartamento);
 
-            var putResponse = await Put<RetornoDepartamento>(Endpoints.BaseURI, Endpoints.Departamento, DepartamentoPostReturn("TesteTeste", 1, 8));
-            Assert.NotNull(putResponse.NomeDepartamento);
+            var putDepartamento = await Put<RetornoDepartamento>(Endpoints.BaseURI, Endpoints.Departamento, DepartamentoPostReturn("TesteTeste", 1, 8));
+            Assert.NotNull(putDepartamento.NomeDepartamento);
 
-            var deleteResponse = await Delete<RetornoDepartamento>(Endpoints.BaseURI, Path.Combine(Endpoints.Departamento, postResponse.Id.ToString()));
-            Assert.NotNull(deleteResponse.NomeDepartamento);
+            var deleteDepartamento = await Delete<RetornoDepartamento>(Endpoints.BaseURI, Path.Combine(Endpoints.Departamento, postDepartamento.Id.ToString()));
+            Assert.NotNull(deleteDepartamento.NomeDepartamento);
         }
     }
 }

@@ -15,17 +15,17 @@ namespace Store.Test.Feature
         [Fact]
         public async Task TestGrupo()
         {
-            var postResponse = await Post<RetornoGrupo>(Endpoints.BaseURI, Endpoints.Grupo, GrupoPostReturn("Nome aleatorio", 1));
-            Assert.True(postResponse.NomeGrupo != null);
+            var postGrupo = await Post<RetornoGrupo>(Endpoints.BaseURI, Endpoints.Grupo, GrupoPostReturn("Nome aleatorio", 1));
+            Assert.True(postGrupo.NomeGrupo != null);
 
-            var getResponse = await Get<RetornoGrupo>(Endpoints.BaseURI, Path.Combine(Endpoints.Grupo, postResponse.Id.ToString()));
-            Assert.NotNull(getResponse.NomeGrupo);
+            var getGrupo = await Get<RetornoGrupo>(Endpoints.BaseURI, Path.Combine(Endpoints.Grupo, postGrupo.Id.ToString()));
+            Assert.NotNull(getGrupo.NomeGrupo);
 
-            var putResponse = await Put<RetornoGrupo>(Endpoints.BaseURI, Endpoints.Grupo, GrupoPostReturn("Nome aleatorio", 2));
-            Assert.NotNull(putResponse.NomeGrupo);
+            var putGrupo = await Put<RetornoGrupo>(Endpoints.BaseURI, Endpoints.Grupo, GrupoPostReturn("Nome aleatorio", 2));
+            Assert.NotNull(putGrupo.NomeGrupo);
 
-            var deleteResponse = await Delete<RetornoGrupo>(Endpoints.BaseURI, Path.Combine(Endpoints.Grupo, postResponse.Id.ToString()));
-            Assert.NotNull(deleteResponse.NomeGrupo);
+            var deleteGrupo = await Delete<RetornoGrupo>(Endpoints.BaseURI, Path.Combine(Endpoints.Grupo, postGrupo.Id.ToString()));
+            Assert.NotNull(deleteGrupo.NomeGrupo);
         }
     }
 }

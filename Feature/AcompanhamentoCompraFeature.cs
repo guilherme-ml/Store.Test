@@ -14,13 +14,13 @@ namespace Store.Test.Feature
         [Fact]
         public async Task TestAcompanhamento()
         {
-            var postResponse = await Post<RetornoAcompanhementoCompra>(Endpoints.BaseURI, Endpoints.Acompanhamentocompra, AcompanhamentoPostReturn(DateTime.Now, 5, 3));
+            var postAcompanhamento = await Post<RetornoAcompanhementoCompra>(Endpoints.BaseURI, Endpoints.Acompanhamentocompra, AcompanhamentoPostReturn(DateTime.Now, 5, 3));
 
-            await Get<RetornoAcompanhementoCompra>(Endpoints.BaseURI, Path.Combine(Endpoints.Acompanhamentocompra, postResponse.Id.ToString()));
+            await Get<RetornoAcompanhementoCompra>(Endpoints.BaseURI, Path.Combine(Endpoints.Acompanhamentocompra, postAcompanhamento.Id.ToString()));
 
             await Put<RetornoAcompanhementoCompra>(Endpoints.BaseURI, Endpoints.Acompanhamentocompra, AcompanhamentoPostReturn(DateTime.Now, 8, 5 ));
 
-            await Delete<RetornoAcompanhementoCompra>(Endpoints.BaseURI, Path.Combine(Endpoints.Acompanhamentocompra, postResponse.Id.ToString()));
+            await Delete<RetornoAcompanhementoCompra>(Endpoints.BaseURI, Path.Combine(Endpoints.Acompanhamentocompra, postAcompanhamento.Id.ToString()));
 
         }
     }

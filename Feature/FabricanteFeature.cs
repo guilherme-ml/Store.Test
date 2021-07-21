@@ -14,17 +14,17 @@ namespace Store.Test.Feature
         [Fact]
         public async Task TestFabricante()
         {
-            var postResponse = await Post<RetornoFabricante>(Endpoints.BaseURI, Endpoints.Fabricante, FabricantePostReturn("Teste", "Teste.com", 1));
-            Assert.True(postResponse.NomeFabricante != null);
+            var postFabricante = await Post<RetornoFabricante>(Endpoints.BaseURI, Endpoints.Fabricante, FabricantePostReturn("Teste", "Teste.com", 1));
+            Assert.True(postFabricante.NomeFabricante != null);
 
-            var getResponse = await Get<RetornoFabricante>(Endpoints.BaseURI, Path.Combine(Endpoints.Fabricante, postResponse.Id.ToString()));
-            Assert.NotNull(getResponse.NomeFabricante);
+            var getFabricante = await Get<RetornoFabricante>(Endpoints.BaseURI, Path.Combine(Endpoints.Fabricante, postFabricante.Id.ToString()));
+            Assert.NotNull(getFabricante.NomeFabricante);
 
-            var putResponse = await Put<RetornoFabricante>(Endpoints.BaseURI, Endpoints.Fabricante, FabricantePostReturn("TesteTeste", "TesteTeste.com", 2));
-            Assert.NotNull(putResponse.NomeFabricante);
+            var putFabricante = await Put<RetornoFabricante>(Endpoints.BaseURI, Endpoints.Fabricante, FabricantePostReturn("TesteTeste", "TesteTeste.com", 2));
+            Assert.NotNull(putFabricante.NomeFabricante);
 
-            var deleteResponse = await Delete<RetornoFabricante>(Endpoints.BaseURI, Path.Combine(Endpoints.Fabricante, postResponse.Id.ToString()));
-            Assert.NotNull(deleteResponse.NomeFabricante);
+            var deleteFabricante = await Delete<RetornoFabricante>(Endpoints.BaseURI, Path.Combine(Endpoints.Fabricante, postFabricante.Id.ToString()));
+            Assert.NotNull(deleteFabricante.NomeFabricante);
         }
     }
 }

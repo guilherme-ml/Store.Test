@@ -14,17 +14,17 @@ namespace Store.Test.Feature
         [Fact]
         public async Task TestPromocao()
         {
-            var postResponse = await Post<RetornoPromocao>(Endpoints.BaseURI, Endpoints.Promocao, PromocaoPostReturn("Nome aleatorio", DateTime.Now , DateTime.Now));
-            Assert.True(postResponse.NomePromo != null);
+            var postPromocao = await Post<RetornoPromocao>(Endpoints.BaseURI, Endpoints.Promocao, PromocaoPostReturn("Nome aleatorio", DateTime.Now , DateTime.Now));
+            Assert.True(postPromocao.NomePromo != null);
 
-            var getResponse = await Get<RetornoPromocao>(Endpoints.BaseURI, Path.Combine(Endpoints.Promocao, postResponse.Id.ToString()));
-            Assert.NotNull(getResponse.NomePromo);
+            var getPromocao = await Get<RetornoPromocao>(Endpoints.BaseURI, Path.Combine(Endpoints.Promocao, postPromocao.Id.ToString()));
+            Assert.NotNull(getPromocao.NomePromo);
 
-            var putResponse = await Put<RetornoPromocao>(Endpoints.BaseURI, Endpoints.Promocao, PromocaoPostReturn("TesteTeste", DateTime.Now, DateTime.Now));
-            Assert.NotNull(putResponse.NomePromo);
+            var putPromocao = await Put<RetornoPromocao>(Endpoints.BaseURI, Endpoints.Promocao, PromocaoPostReturn("TesteTeste", DateTime.Now, DateTime.Now));
+            Assert.NotNull(putPromocao.NomePromo);
 
-            var deleteResponse = await Delete<RetornoPromocao>(Endpoints.BaseURI, Path.Combine(Endpoints.Promocao, postResponse.Id.ToString()));
-            Assert.NotNull(deleteResponse.NomePromo);
+            var deletePromocao = await Delete<RetornoPromocao>(Endpoints.BaseURI, Path.Combine(Endpoints.Promocao, postPromocao.Id.ToString()));
+            Assert.NotNull(deletePromocao.NomePromo);
         }
     }
 }

@@ -14,17 +14,17 @@ namespace Store.Test.Feature
        [Fact]
        public async Task TestCondPagamento()
         {
-            var postResponse = await Post<RetornoCondicaoPag>(Endpoints.BaseURI, Endpoints.Condicaopagamento, CondicaoPagamentoPostReturn("Teste", 1));
-            Assert.True(postResponse.DescricaoCondPag != null);
+            var postCondicao = await Post<RetornoCondicaoPag>(Endpoints.BaseURI, Endpoints.Condicaopagamento, CondicaoPagamentoPostReturn("Teste", 1));
+            Assert.True(postCondicao.DescricaoCondPag != null);
 
-            var getResponse = await Get<RetornoCondicaoPag>(Endpoints.BaseURI, Path.Combine(Endpoints.Condicaopagamento, postResponse.Id.ToString()));
-            Assert.NotNull(getResponse.DescricaoCondPag);
+            var getCondicao = await Get<RetornoCondicaoPag>(Endpoints.BaseURI, Path.Combine(Endpoints.Condicaopagamento, postCondicao.Id.ToString()));
+            Assert.NotNull(getCondicao.DescricaoCondPag);
 
-            var putResponse = await Put<RetornoCondicaoPag>(Endpoints.BaseURI, Endpoints.Condicaopagamento, CondicaoPagamentoPostReturn("TesteTeste", 8));
-            Assert.NotNull(putResponse.DescricaoCondPag);
+            var putCondicao = await Put<RetornoCondicaoPag>(Endpoints.BaseURI, Endpoints.Condicaopagamento, CondicaoPagamentoPostReturn("TesteTeste", 8));
+            Assert.NotNull(putCondicao.DescricaoCondPag);
 
-            var deleteResponse = await Delete<RetornoCondicaoPag>(Endpoints.BaseURI, Path.Combine(Endpoints.Condicaopagamento, postResponse.Id.ToString()));
-            Assert.NotNull(deleteResponse.DescricaoCondPag);
+            var deleteCondicao = await Delete<RetornoCondicaoPag>(Endpoints.BaseURI, Path.Combine(Endpoints.Condicaopagamento, postCondicao.Id.ToString()));
+            Assert.NotNull(deleteCondicao.DescricaoCondPag);
         }
     }
 }

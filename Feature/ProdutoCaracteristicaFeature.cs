@@ -14,17 +14,17 @@ namespace Store.Test.Feature
         [Fact]
         public async Task TestProdutoCaracteristica()
         {
-            var postResponse = await Post<RetornoProdutoCaracteristicas>(Endpoints.BaseURI, Endpoints.Caracteristica, ProdutoCaracteristicaPostReturn("12", 1, 2));
-            Assert.True(postResponse.ValorCaracteristica != null);
+            var postProdutoCaracteristica = await Post<RetornoProdutoCaracteristicas>(Endpoints.BaseURI, Endpoints.Caracteristica, ProdutoCaracteristicaPostReturn("12", 1, 2));
+            Assert.True(postProdutoCaracteristica.ValorCaracteristica != null);
 
-            var getResponse = await Get<RetornoProdutoCaracteristicas>(Endpoints.BaseURI, Path.Combine(Endpoints.Caracteristica, postResponse.Id.ToString()));
-            Assert.NotNull(getResponse.ValorCaracteristica);
+            var getProdutoCaracteristica = await Get<RetornoProdutoCaracteristicas>(Endpoints.BaseURI, Path.Combine(Endpoints.Caracteristica, postProdutoCaracteristica.Id.ToString()));
+            Assert.NotNull(getProdutoCaracteristica.ValorCaracteristica);
 
-            var putResponse = await Put<RetornoProdutoCaracteristicas>(Endpoints.BaseURI, Endpoints.Caracteristica, ProdutoCaracteristicaPostReturn("TesteTeste", 8, 6));
-            Assert.NotNull(putResponse.ValorCaracteristica);
+            var putProdutoCaracteristica = await Put<RetornoProdutoCaracteristicas>(Endpoints.BaseURI, Endpoints.Caracteristica, ProdutoCaracteristicaPostReturn("TesteTeste", 8, 6));
+            Assert.NotNull(putProdutoCaracteristica.ValorCaracteristica);
 
-            var deleteResponse = await Delete<RetornoProdutoCaracteristicas>(Endpoints.BaseURI, Path.Combine(Endpoints.Caracteristica, postResponse.Id.ToString()));
-            Assert.NotNull(deleteResponse.ValorCaracteristica);
+            var delteProdutoCaracteristica = await Delete<RetornoProdutoCaracteristicas>(Endpoints.BaseURI, Path.Combine(Endpoints.Caracteristica, postProdutoCaracteristica.Id.ToString()));
+            Assert.NotNull(delteProdutoCaracteristica.ValorCaracteristica);
         }
     }
 }
