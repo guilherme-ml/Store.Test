@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
 using Store.Test.Rest;
 using Store.Test.Dtos.PostAndPut;
+using System;
 
 namespace Store.Test.Base
 {
@@ -77,8 +78,42 @@ namespace Store.Test.Base
             return result;
         }
 
+        public static AcompanhamentoPostReturn AcompanhamentoPostReturn(DateTime dtEHrSituacao, int situacaoId, int numeroItemCompraId)
+        {
+            AcompanhamentoPostReturn acompanhamentoPostReturn = new AcompanhamentoPostReturn
+            {
+                DtEHrSituacao = dtEHrSituacao,
+                SituacaoCompraId = situacaoId,
+                NumeroItemCompraId = numeroItemCompraId
+            };
+            return acompanhamentoPostReturn;
+        }
+
+        public static CaracteristicaPostReturn CaracteristicaPostReturn(string nome, int idf)
+        {
+            CaracteristicaPostReturn caracteristicaPostReturn = new CaracteristicaPostReturn 
+            {
+                nomeCaracteristica = nome,
+                idfAtivo = idf
+            };
+            return caracteristicaPostReturn;
+        }
+
+        public static CategoriaPostReturn CategoriaPostReturn(string nome, int posicao, int idfativo, int departamento)
+        {
+            CategoriaPostReturn categoriaPostReturn = new CategoriaPostReturn
+            {
+                nomeCategoria = nome,
+                posCategoria = posicao,
+                idfAtivo = idfativo,
+                departamentoId = departamento
+            };
+            return categoriaPostReturn;
+        }
+
         public static ClientesPostReturn ClientesPostReturn(string nome, string enderecoCliente, string cpfCliente, string cepCliente, string bairroCliente, string telefone, string celular)
         {
+
             ClientesPostReturn clientesPostReturn = new ClientesPostReturn
             {
                 NomeCliente = nome,
@@ -91,6 +126,104 @@ namespace Store.Test.Base
             };
             return clientesPostReturn;
         }
-
+        public static CompraPostReturn CompraPostReturn(string data, int cliente, int condicao)
+        {
+            CompraPostReturn compraPostReturn = new CompraPostReturn
+            {
+                dtEHrCompra = data,
+                clienteId = cliente,
+                condPagamento = condicao
+            };
+            return compraPostReturn;
+        }
+        public static CondicaoPagamentoPostReturn CondicaoPagamentoPostReturn(string descricao, int idfAtivo)
+        {
+            CondicaoPagamentoPostReturn condicaoPagamentoPostReturn = new CondicaoPagamentoPostReturn
+            {
+                descricaoCondPag = descricao,
+                idfAtivo = idfAtivo
+            };
+            return condicaoPagamentoPostReturn;
+        }
+        public static DepartamentoPostReturn DepartamentoPostReturn(string nome, int idfAtivo, int grupo)
+        {
+            DepartamentoPostReturn departamentoPostReturn = new DepartamentoPostReturn
+            {
+                nomeDepartamento = nome,
+                idfAtivo = idfAtivo,
+                grupoId = grupo
+            };
+            return departamentoPostReturn;
+        }
+        public static FabricantePostReturn FabricantePostReturn(string nome, string site, int idfAtivo)
+        {
+            FabricantePostReturn fabricantePostReturn = new FabricantePostReturn
+            {
+                nomeFabricante = nome,
+                siteFabricante = site,
+                idfAtivo = idfAtivo
+            };
+            return fabricantePostReturn;
+        }
+        public static GrupoPostReturn GrupoPostReturn(string nome, int idfAtivo)
+        {
+            GrupoPostReturn grupoPostReturn = new GrupoPostReturn
+            {
+                nomeGrupo = nome,
+                idfAtivo = idfAtivo
+            };
+            return grupoPostReturn;
+        }
+        public static ItemCompraPostReturn ItemCompraPostReturn(int preco, int quantidade, int produdo, int compra)
+        {
+            ItemCompraPostReturn itemCompraPostReturn = new ItemCompraPostReturn
+            {
+                precoProduto = preco,
+                quantidadeProduto = quantidade,
+                produtoId = produdo,
+                numCompra = compra
+            };
+            return itemCompraPostReturn;
+        }
+        public static PrazoPostReturn PrazoPostReturn(int parcelas, int pagamento)
+        {
+            PrazoPostReturn prazoPostReturn = new PrazoPostReturn
+            {
+                numeroParcelas = parcelas,
+                condPagamentoId = pagamento
+            };
+            return prazoPostReturn;
+        }
+        public static ProdutoCaracteristicaPostReturn ProdutoCaracteristicaPostReturn(string valor, int produto, int caracteristica)
+        {
+            ProdutoCaracteristicaPostReturn produtoCaracteristicaPostReturn = new ProdutoCaracteristicaPostReturn
+            {
+                valorCaracteristica = valor,
+                produtoId = produto,
+                caracteristicaId = caracteristica
+            };
+            return produtoCaracteristicaPostReturn;
+        }
+        public static PromocaoPostReturn PromocaoPostReturn(string nome, DateTime inicio, DateTime fim)
+        {
+            PromocaoPostReturn promocaoPostReturn = new PromocaoPostReturn
+            {
+                nomePromo = nome,
+                dtInicioPromo = inicio,
+                dtFimPromo = fim
+            };
+            return promocaoPostReturn;
+        }
+        public static PromocaoProdutoPostReturn PromocaoProdutoPostReturn(int preco, int condicao, int promocao, int produto)
+        {
+            PromocaoProdutoPostReturn promocaoProdutoPostReturn = new PromocaoProdutoPostReturn
+            {
+                precoProduto = preco,
+                condicaoPagamentoID = condicao,
+                promocao = promocao,
+                produtoId = produto
+            };
+            return promocaoProdutoPostReturn;
+        }
     }
 }
