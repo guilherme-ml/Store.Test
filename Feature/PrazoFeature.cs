@@ -14,13 +14,13 @@ namespace Store.Test.Feature
         [Fact]
         public async Task TestPrazo()
         {
-           await Post<RetornoPrazoPagamento>(Endpoints.BaseURI, Endpoints.Prazopagamento, PrazoPostReturn(12, 1));
+          var postPrazo = await Post<RetornoPrazoPagamento>(Endpoints.BaseURI, Endpoints.Prazopagamento, PrazoPostReturn(12, 1));
 
-           await Get<RetornoPrazoPagamento>(Endpoints.BaseURI, Path.Combine(Endpoints.Prazopagamento, postResponse.Id.ToString()));
+           await Get<RetornoPrazoPagamento>(Endpoints.BaseURI, Path.Combine(Endpoints.Prazopagamento, postPrazo.Id.ToString()));
 
            await Put<RetornoPrazoPagamento>(Endpoints.BaseURI, Endpoints.Prazopagamento, PrazoPostReturn(5, 2));
 
-           await Delete<RetornoPrazoPagamento>(Endpoints.BaseURI, Path.Combine(Endpoints.Prazopagamento, postResponse.Id.ToString()));
+           await Delete<RetornoPrazoPagamento>(Endpoints.BaseURI, Path.Combine(Endpoints.Prazopagamento, postPrazo.Id.ToString()));
         }
     }
 }

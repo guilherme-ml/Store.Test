@@ -15,7 +15,6 @@ namespace Store.Test.Feature
         public async Task TestAcompanhamento()
         {
             var postResponse = await Post<RetornoAcompanhementoCompra>(Endpoints.BaseURI, Endpoints.Acompanhamentocompra, AcompanhamentoPostReturn(DateTime.Now, 5, 3));
-            Assert.True(postResponse.DtEHrSituacao != null);
 
             await Get<RetornoAcompanhementoCompra>(Endpoints.BaseURI, Path.Combine(Endpoints.Acompanhamentocompra, postResponse.Id.ToString()));
 

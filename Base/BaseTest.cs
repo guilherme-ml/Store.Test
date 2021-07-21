@@ -225,5 +225,14 @@ namespace Store.Test.Base
             };
             return promocaoProdutoPostReturn;
         }
+        public static SituacaoPostReturn SituacaoPostReturn(string descricao, int idfAtivo)
+        {
+            SituacaoPostReturn situacaoPostReturn = new SituacaoPostReturn
+            {
+                descSituacaoCompra = descricao,
+                idfAtivo = idfAtivo
+            };
+            return situacaoPostReturn;
+        }
     }
 }
